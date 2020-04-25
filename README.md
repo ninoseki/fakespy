@@ -4,7 +4,7 @@ A CLI tool to retrieve a message (command) from FakeSpy C2.
 
 ## Requirements
 
-- Python 3.8+
+- Python 3 (tested with Python 3.8)
 - [Poetry](https://python-poetry.org/)
 
 ## Install
@@ -34,12 +34,14 @@ FLAGS
 
 NOTES
     You can also use flags syntax for POSITIONAL ARGUMENTS
-
-$ python python cli.py getMessage foo.bar.com
 ```
 
 - Supported commands:
- - GetMessage
- - [GetMessage2](https://github.com/ninoseki/fakespy/wiki#getmessage2)(`sendSms`)
- - [GetMoreMessage](https://github.com/ninoseki/fakespy/wiki#getmoremessage)(`sendAll`)
- - [GetMoreConMessge](https://github.com/ninoseki/fakespy/wiki#getmoreconmessage)(`sendCon`)
+  - GetMessage
+  - [GetMessage2](https://github.com/ninoseki/fakespy/wiki#getmessage2)(`sendSms`)
+  - [GetMoreMessage](https://github.com/ninoseki/fakespy/wiki#getmoremessage)(`sendAll`)
+  - [GetMoreConMessge](https://github.com/ninoseki/fakespy/wiki#getmoreconmessage)(`sendCon`)
+
+```bash
+python cli.py getMessage foo.bar.com
+```
