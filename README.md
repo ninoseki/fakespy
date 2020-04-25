@@ -43,5 +43,5 @@ NOTES
   - [GetMoreConMessge](https://github.com/ninoseki/fakespy/wiki#getmoreconmessage)(`sendCon`)
 
 ```bash
-python cli.py getMessage foo.bar.com
+python cli.py GetMessage2 foo.bar.com
 ```
