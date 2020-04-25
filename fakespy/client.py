@@ -19,8 +19,6 @@ class Client:
     def _post(
         self, url: str, payload: Dict, headers: Optional[Dict] = None
     ) -> Optional[Dict]:
-        logger.debug(f"Send POST reqeust to {url}")
-
         headers = self.default_headers if headers is None else headers
 
         r = httpx.post(url, headers=headers, json=payload)
@@ -28,10 +26,10 @@ class Client:
             r.raise_for_status()
             return cast(Dict, r.json())
         except HTTPError:
-            logger.debug(f"{url} returns {r.status_code}")
+            logger.error(f"{url} returns {r.status_code}")
         except JSONDecodeError:
-            logger.debug(f"{url} returns an invalid JSON")
-            logger.debug(r.text)
+            logger.error(f"{url} returns an invalid JSON")
+            logger.error(r.text)
 
         return None
 
