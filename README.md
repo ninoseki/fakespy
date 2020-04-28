@@ -1,6 +1,6 @@
 # fakespy
 
-A CLI tool to retrieve a message (command) from FakeSpy C2.
+A CLI tool to retrieve a message (command) from FakeSpy C2 and analyze a FakeSpy apk.
 
 ## Requirements
 
@@ -12,29 +12,48 @@ A CLI tool to retrieve a message (command) from FakeSpy C2.
 ```bash
 git clone https://github.com/ninoseki/fakespy
 cd fakespy
-poetry install --no-root
+poetry install
 ```
 
 ## Usage
 
 ```bash
-$ python cli.py --help
-NAME
-    cli.py
+$ python cli.py
+Usage: cli.py [OPTIONS] COMMAND [ARGS]...
 
-SYNOPSIS
-    cli.py COMMAND C2 <flags>
+Options:
+  --install-completion [bash|zsh|fish|powershell|pwsh]
+                                  Install completion for the specified shell.
+  --show-completion [bash|zsh|fish|powershell|pwsh]
+                                  Show completion for the specified shell, to
+                                  copy it or customize the installation.
 
-POSITIONAL ARGUMENTS
-    COMMAND
-    C2
+  --help                          Show this message and exit.
 
-FLAGS
-    --mobile_number=MOBILE_NUMBER
-
-NOTES
-    You can also use flags syntax for POSITIONAL ARGUMENTS
+Commands:
+  analyze-apk
+  send-command
 ```
+
+### analyze-apk
+
+This command analyzes a given APK and extracts C2 urls.
+
+Note: the implementation is not robust and I cannot assure the accuracy of the results.
+
+```bash
+$ python cli.py analyze-apk /tmp/foo.apk
+{
+  "c2": [
+    "http://xxx.club/",
+    "http://yyy.club/"
+  ]
+}
+```
+
+### send-command
+
+This command sends a request to a C2.
 
 - Supported commands:
   - GetMessage
@@ -43,5 +62,5 @@ NOTES
   - [GetMoreConMessge](https://github.com/ninoseki/fakespy/wiki#getmoreconmessage)(`sendCon`)
 
 ```bash
-python cli.py GetMessage2 foo.bar.com
+python cli.py send-co0mmand GetMessage2 foo.bar.com
 ```

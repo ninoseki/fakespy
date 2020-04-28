@@ -1,19 +1,27 @@
 import json
-import sys
 
-import fire
+import typer
 
+from fakespy.analyzer import analyze
 from fakespy.client import Client
 
-sys.path = ["."] + sys.path[1:]  # noqa # isort:skip
+app = typer.Typer()
 
 
-def make_request(command: str, c2: str, mobile_number: str = "xx"):
+@app.command()
+def send_command(command: str, c2: str, mobile_number: str = "xx"):
     client = Client(c2=c2, mobile_number=mobile_number)
     res = client.query(command)
     formatted_json = json.dumps(res, indent=2)
     print(formatted_json)
 
 
+@app.command()
+def analyze_apk(path: str, extract_dex: bool = False, verbose: bool = False):
+    res = analyze(path, extract_dex, verbose)
+    formatted_json = json.dumps(res, indent=2)
+    print(formatted_json)
+
+
 if __name__ == "__main__":
-    fire.Fire(make_request, name="cli")
+    app()

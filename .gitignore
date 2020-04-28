@@ -121,3 +121,5 @@ dmypy.json
 
 # VS code
 .vscode/
+
+tmp/
