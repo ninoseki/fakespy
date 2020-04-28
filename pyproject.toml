@@ -8,7 +8,9 @@ authors = ["Manabu Niseki <manabu.niseki@gmail.com>"]
 python = "^3.8"
 loguru = "^0.4.1"
 httpx = "^0.12.1"
-fire = "^0.3.1"
+androguard = "^3.3.5"
+typer = "^0.2.1"
+pycrypto = "^2.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -28,7 +30,7 @@ seed-isort-config = "^2.1.1"
 [tool.isort]
 force_grid_wrap = 0
 include_trailing_comma = true
-known_third_party = ["fire", "httpx", "loguru"]
+known_third_party = ["Crypto", "androguard", "httpx", "loguru", "typer"]
 line_length = 88
 multi_line_output = 3
 use_parentheses= true
