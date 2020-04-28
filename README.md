@@ -39,6 +39,8 @@ Commands:
 
 This command analyzes a given APK and extracts C2 urls.
 
+Note: the implementation is not robust and I cannot assure the accuracy of the results.
+
 ```bash
 $ python cli.py analyze-apk /tmp/foo.apk
 {
