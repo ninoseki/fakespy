@@ -43,7 +43,7 @@ def decrypt_dex(data: bytes) -> Optional[DalvikVMFormat]:
 
 def find_hidden_dex(apk: APK) -> Optional[DalvikVMFormat]:
     files = apk.get_files()
-    hidden_dex_names = [x for x in files if re.match(r"assets/[a-z0-9]+", x)]
+    hidden_dex_names = [x for x in files if re.match(r"assets/[a-zA-Z0-9]+", x)]
     if len(hidden_dex_names) == 1:
         hidden_dex_name = hidden_dex_names[0]
         data = apk.get_file(hidden_dex_name)
@@ -53,7 +53,7 @@ def find_hidden_dex(apk: APK) -> Optional[DalvikVMFormat]:
 
 
 def find_urls(strings: List[str]) -> List[str]:
-    return [x for x in strings if re.match(r"http[s]?:\/\/[a-z\.-]+\/", x)]
+    return [x for x in strings if re.match(r"http[s]?:\/\/[a-zA-Z0-1\.-]+\/", x)]
 
 
 def find_c2(urls: List[str]) -> List[str]:
